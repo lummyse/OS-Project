@@ -39,21 +39,27 @@ namespace OpSysPolicies
         List<Processes> processInfo = new List<Processes>();
         ArrayList p = new ArrayList();
         float[] memoryHoles = new float[] { 100, 200, 50, 70, 90, 350, 70, 70 };
-        List<String> addressingError = new List<String>();
 
+        #region PROCESS
         private void addBt_Click(object sender, EventArgs e)
         {
-            //MEMORY CAPACITY
-            //float memorySize = 1000;
-            performPolicy();
-        }
 
-        private void performPolicy()
+        }
+        private bool isProcessExisting(String processName)
+        {
+            if (processInfo.Exists(x => x.processName == processName))
+            {
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        private void performChoice()
         {
             //Check if process name exists. If not, process is added. If yes, prompts user.
-            if (!isProcessExisting(pNameTb.Text) && pNameTb.Text is string)
+            if (!isProcessExisting(pNameTb.Text))
             {
-                textBox1.Clear();
                 processInfo.Add(new Processes { processName = pNameTb.Text, processSize = float.Parse(pSizeTb.Text) });
                 if (worstFitRb.Checked)
                 {
@@ -79,15 +85,21 @@ namespace OpSysPolicies
             }
             pNameTb.Focus();
         }
-        private bool isProcessExisting(String processName)
+
+        #region MEMORY
+        private void fcfs()
         {
-            if (processInfo.Exists(x => x.processName == processName))
-            {
-                return true;
-            }
-            return false;
         }
-      
+        private void sjn()
+        {
+        }
+        private void pbs()
+        {
+        }
+        private void rbs()
+        {
+        }
+        #endregion
         #region POLICIES
         private void bestFit()
         {
@@ -162,10 +174,13 @@ namespace OpSysPolicies
                 }
                 if (processInfo[h].processSize <= mh[indOfLargest])
                 {
-                    mm.Add(new ModifiedMemory { memoryHoleIndex = indOfLargest, 
-                                                memoryHoleSize = mh[indOfLargest], 
-                                                processName = processInfo[h].processName, 
-                                                processSize = processInfo[h].processSize });
+                    mm.Add(new ModifiedMemory
+                    {
+                        memoryHoleIndex = indOfLargest,
+                        memoryHoleSize = mh[indOfLargest],
+                        processName = processInfo[h].processName,
+                        processSize = processInfo[h].processSize
+                    });
                     mh[indOfLargest] = 0;
                     foundHole = true;
                 }
@@ -266,7 +281,7 @@ namespace OpSysPolicies
             int totalHeight = 0;
             int height;
             float holesSum = 0;
-            
+
             for (int i = 0; i < memoryHoles.Length; i++)
             {
                 //Draw memory
@@ -291,10 +306,10 @@ namespace OpSysPolicies
                     }
                 }
             }
-            e.Graphics.DrawString(holesSum.ToString(), 
-                                  new Font("Times New Roman", 12), 
-                                  myPen.Brush, 
-                                  inPanel.Width - 38, 
+            e.Graphics.DrawString(holesSum.ToString(),
+                                  new Font("Times New Roman", 12),
+                                  myPen.Brush,
+                                  inPanel.Width - 38,
                                   totalHeight);
 
             //Change inPanel position if it exceeds outPanel's size
@@ -345,14 +360,46 @@ namespace OpSysPolicies
                 inPanel.Invalidate();
             }
         }
+        private void psRb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (psRb.Checked)
+            {
+                psGb.Enabled = true;
+                mpGb.Enabled = false;
+            }
+        }
+
+        private void mpRb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mpRb.Checked)
+            {
+                psGb.Enabled = false;
+                mpGb.Enabled = true;
+            }
+        }
+        private void bothRb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bothRb.Checked)
+            {
+                psGb.Enabled = true;
+                mpGb.Enabled = true;
+                rbsRb.Enabled = false;
+            }
+        }
         #endregion
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                performPolicy();
+                performChoice();
             }
         }
-    }
+
+        private void doProcessBt_Click(object sender, EventArgs e)
+        {
+            performChoice();
+        }
+
+    }   
 }

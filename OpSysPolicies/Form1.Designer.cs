@@ -36,7 +36,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mpGb = new System.Windows.Forms.GroupBox();
             this.nextFitRb = new System.Windows.Forms.RadioButton();
             this.worstFitRb = new System.Windows.Forms.RadioButton();
             this.bestFitRb = new System.Windows.Forms.RadioButton();
@@ -49,11 +49,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.outPanel = new System.Windows.Forms.Panel();
             this.inPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.psGb = new System.Windows.Forms.GroupBox();
+            this.sjnRb = new System.Windows.Forms.RadioButton();
+            this.fbsRb = new System.Windows.Forms.RadioButton();
+            this.rbsRb = new System.Windows.Forms.RadioButton();
+            this.fcfsRb = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.doProcessBt = new System.Windows.Forms.Button();
+            this.psRb = new System.Windows.Forms.RadioButton();
+            this.mpRb = new System.Windows.Forms.RadioButton();
+            this.bothRb = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.mpGb.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.outPanel.SuspendLayout();
+            this.psGb.SuspendLayout();
             this.SuspendLayout();
             // 
             // addBt
@@ -61,7 +71,7 @@
             this.addBt.Location = new System.Drawing.Point(98, 87);
             this.addBt.Name = "addBt";
             this.addBt.Size = new System.Drawing.Size(75, 23);
-            this.addBt.TabIndex = 0;
+            this.addBt.TabIndex = 1;
             this.addBt.Text = "Add Process";
             this.addBt.UseVisualStyleBackColor = true;
             this.addBt.Click += new System.EventHandler(this.addBt_Click);
@@ -74,9 +84,9 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(216, 142);
+            this.groupBox1.Location = new System.Drawing.Point(216, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(197, 245);
+            this.groupBox1.Size = new System.Drawing.Size(197, 440);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Memory";
@@ -101,7 +111,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(25, 72);
+            this.radioButton3.Location = new System.Drawing.Point(25, 78);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(87, 17);
             this.radioButton3.TabIndex = 6;
@@ -112,7 +122,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(25, 39);
+            this.radioButton1.Location = new System.Drawing.Point(25, 30);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(59, 17);
             this.radioButton1.TabIndex = 6;
@@ -123,7 +133,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(98, 39);
+            this.radioButton2.Location = new System.Drawing.Point(25, 55);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(65, 17);
             this.radioButton2.TabIndex = 7;
@@ -141,18 +151,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.addBt_Click);
             // 
-            // groupBox2
+            // mpGb
             // 
-            this.groupBox2.Controls.Add(this.nextFitRb);
-            this.groupBox2.Controls.Add(this.worstFitRb);
-            this.groupBox2.Controls.Add(this.bestFitRb);
-            this.groupBox2.Controls.Add(this.firstFitRb);
-            this.groupBox2.Location = new System.Drawing.Point(12, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(197, 126);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Policies";
+            this.mpGb.Controls.Add(this.nextFitRb);
+            this.mpGb.Controls.Add(this.worstFitRb);
+            this.mpGb.Controls.Add(this.bestFitRb);
+            this.mpGb.Controls.Add(this.firstFitRb);
+            this.mpGb.Enabled = false;
+            this.mpGb.Location = new System.Drawing.Point(419, 201);
+            this.mpGb.Name = "mpGb";
+            this.mpGb.Size = new System.Drawing.Size(197, 126);
+            this.mpGb.TabIndex = 4;
+            this.mpGb.TabStop = false;
+            this.mpGb.Text = "Memory Management Policies";
             // 
             // nextFitRb
             // 
@@ -179,12 +190,10 @@
             // bestFitRb
             // 
             this.bestFitRb.AutoSize = true;
-            this.bestFitRb.Checked = true;
             this.bestFitRb.Location = new System.Drawing.Point(109, 61);
             this.bestFitRb.Name = "bestFitRb";
             this.bestFitRb.Size = new System.Drawing.Size(60, 17);
             this.bestFitRb.TabIndex = 5;
-            this.bestFitRb.TabStop = true;
             this.bestFitRb.Text = "Best-Fit";
             this.bestFitRb.UseVisualStyleBackColor = true;
             this.bestFitRb.CheckedChanged += new System.EventHandler(this.bestFitRb_CheckedChanged);
@@ -192,10 +201,12 @@
             // firstFitRb
             // 
             this.firstFitRb.AutoSize = true;
+            this.firstFitRb.Checked = true;
             this.firstFitRb.Location = new System.Drawing.Point(25, 28);
             this.firstFitRb.Name = "firstFitRb";
             this.firstFitRb.Size = new System.Drawing.Size(58, 17);
             this.firstFitRb.TabIndex = 5;
+            this.firstFitRb.TabStop = true;
             this.firstFitRb.Text = "First-Fit";
             this.firstFitRb.UseVisualStyleBackColor = true;
             this.firstFitRb.CheckedChanged += new System.EventHandler(this.firstFitRb_CheckedChanged);
@@ -208,9 +219,9 @@
             this.groupBox3.Controls.Add(this.pNameTb);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.addBt);
-            this.groupBox3.Location = new System.Drawing.Point(216, 6);
+            this.groupBox3.Location = new System.Drawing.Point(12, 55);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(197, 126);
+            this.groupBox3.Size = new System.Drawing.Size(197, 440);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Process";
@@ -266,36 +277,145 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outPanel.AutoScroll = true;
             this.outPanel.Controls.Add(this.inPanel);
-            this.outPanel.Location = new System.Drawing.Point(589, 12);
+            this.outPanel.Location = new System.Drawing.Point(725, 12);
             this.outPanel.Name = "outPanel";
-            this.outPanel.Size = new System.Drawing.Size(265, 486);
+            this.outPanel.Size = new System.Drawing.Size(307, 486);
             this.outPanel.TabIndex = 6;
             // 
             // inPanel
             // 
             this.inPanel.AutoSize = true;
-            this.inPanel.Location = new System.Drawing.Point(3, 13);
+            this.inPanel.Location = new System.Drawing.Point(11, 3);
             this.inPanel.Name = "inPanel";
             this.inPanel.Size = new System.Drawing.Size(236, 470);
             this.inPanel.TabIndex = 0;
             this.inPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.inPanel_Paint);
             // 
-            // textBox1
+            // psGb
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(406, 443);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 20);
-            this.textBox1.TabIndex = 7;
+            this.psGb.Controls.Add(this.sjnRb);
+            this.psGb.Controls.Add(this.fbsRb);
+            this.psGb.Controls.Add(this.rbsRb);
+            this.psGb.Controls.Add(this.fcfsRb);
+            this.psGb.Enabled = false;
+            this.psGb.Location = new System.Drawing.Point(419, 57);
+            this.psGb.Name = "psGb";
+            this.psGb.Size = new System.Drawing.Size(197, 126);
+            this.psGb.TabIndex = 7;
+            this.psGb.TabStop = false;
+            this.psGb.Text = "Process Scheduling";
+            // 
+            // sjnRb
+            // 
+            this.sjnRb.AutoSize = true;
+            this.sjnRb.Location = new System.Drawing.Point(25, 61);
+            this.sjnRb.Name = "sjnRb";
+            this.sjnRb.Size = new System.Drawing.Size(45, 17);
+            this.sjnRb.TabIndex = 6;
+            this.sjnRb.Text = "SJN";
+            this.sjnRb.UseVisualStyleBackColor = true;
+            // 
+            // fbsRb
+            // 
+            this.fbsRb.AutoSize = true;
+            this.fbsRb.Location = new System.Drawing.Point(109, 28);
+            this.fbsRb.Name = "fbsRb";
+            this.fbsRb.Size = new System.Drawing.Size(46, 17);
+            this.fbsRb.TabIndex = 5;
+            this.fbsRb.Text = "PBS";
+            this.fbsRb.UseVisualStyleBackColor = true;
+            // 
+            // rbsRb
+            // 
+            this.rbsRb.AutoSize = true;
+            this.rbsRb.Location = new System.Drawing.Point(109, 61);
+            this.rbsRb.Name = "rbsRb";
+            this.rbsRb.Size = new System.Drawing.Size(47, 17);
+            this.rbsRb.TabIndex = 5;
+            this.rbsRb.Text = "RBS";
+            this.rbsRb.UseVisualStyleBackColor = true;
+            // 
+            // fcfsRb
+            // 
+            this.fcfsRb.AutoSize = true;
+            this.fcfsRb.Checked = true;
+            this.fcfsRb.Location = new System.Drawing.Point(25, 28);
+            this.fcfsRb.Name = "fcfsRb";
+            this.fcfsRb.Size = new System.Drawing.Size(51, 17);
+            this.fcfsRb.TabIndex = 5;
+            this.fcfsRb.TabStop = true;
+            this.fcfsRb.Text = "FCFS";
+            this.fcfsRb.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Perform:";
+            // 
+            // doProcessBt
+            // 
+            this.doProcessBt.Location = new System.Drawing.Point(541, 346);
+            this.doProcessBt.Name = "doProcessBt";
+            this.doProcessBt.Size = new System.Drawing.Size(75, 23);
+            this.doProcessBt.TabIndex = 0;
+            this.doProcessBt.Text = "GO";
+            this.doProcessBt.UseVisualStyleBackColor = true;
+            this.doProcessBt.Click += new System.EventHandler(this.doProcessBt_Click);
+            // 
+            // psRb
+            // 
+            this.psRb.AutoSize = true;
+            this.psRb.Checked = true;
+            this.psRb.Location = new System.Drawing.Point(87, 17);
+            this.psRb.Name = "psRb";
+            this.psRb.Size = new System.Drawing.Size(119, 17);
+            this.psRb.TabIndex = 11;
+            this.psRb.TabStop = true;
+            this.psRb.Text = "Process Scheduling";
+            this.psRb.UseVisualStyleBackColor = true;
+            this.psRb.CheckedChanged += new System.EventHandler(this.psRb_CheckedChanged);
+            // 
+            // mpRb
+            // 
+            this.mpRb.AutoSize = true;
+            this.mpRb.Location = new System.Drawing.Point(219, 17);
+            this.mpRb.Name = "mpRb";
+            this.mpRb.Size = new System.Drawing.Size(127, 17);
+            this.mpRb.TabIndex = 11;
+            this.mpRb.TabStop = true;
+            this.mpRb.Text = "Memory Management";
+            this.mpRb.UseVisualStyleBackColor = true;
+            this.mpRb.CheckedChanged += new System.EventHandler(this.mpRb_CheckedChanged);
+            // 
+            // bothRb
+            // 
+            this.bothRb.AutoSize = true;
+            this.bothRb.Location = new System.Drawing.Point(360, 17);
+            this.bothRb.Name = "bothRb";
+            this.bothRb.Size = new System.Drawing.Size(47, 17);
+            this.bothRb.TabIndex = 11;
+            this.bothRb.TabStop = true;
+            this.bothRb.Text = "Both";
+            this.bothRb.UseVisualStyleBackColor = true;
+            this.bothRb.CheckedChanged += new System.EventHandler(this.bothRb_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 510);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1049, 510);
+            this.Controls.Add(this.bothRb);
+            this.Controls.Add(this.mpRb);
+            this.Controls.Add(this.psRb);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.psGb);
             this.Controls.Add(this.outPanel);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.doProcessBt);
+            this.Controls.Add(this.mpGb);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.KeyPreview = true;
@@ -304,12 +424,14 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.mpGb.ResumeLayout(false);
+            this.mpGb.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.outPanel.ResumeLayout(false);
             this.outPanel.PerformLayout();
+            this.psGb.ResumeLayout(false);
+            this.psGb.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +441,7 @@
 
         private System.Windows.Forms.Button addBt;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox mpGb;
         private System.Windows.Forms.RadioButton worstFitRb;
         private System.Windows.Forms.RadioButton bestFitRb;
         private System.Windows.Forms.RadioButton firstFitRb;
@@ -338,7 +460,16 @@
         private System.Windows.Forms.Panel outPanel;
         private System.Windows.Forms.Panel inPanel;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox psGb;
+        private System.Windows.Forms.RadioButton sjnRb;
+        private System.Windows.Forms.RadioButton fbsRb;
+        private System.Windows.Forms.RadioButton rbsRb;
+        private System.Windows.Forms.RadioButton fcfsRb;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button doProcessBt;
+        private System.Windows.Forms.RadioButton psRb;
+        private System.Windows.Forms.RadioButton mpRb;
+        private System.Windows.Forms.RadioButton bothRb;
     }
 }
 
